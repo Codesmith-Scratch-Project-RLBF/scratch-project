@@ -5,23 +5,17 @@ const Register = () => {
   const [password, setPassWord] = useState();
 
   const handleRegister = async () => {};
-  const handleUsername = (e) => {
-    setUserName(e.target.value);
-  };
 
-  const handlePassword = (e) => {
-    setPassWord(e.target.value);
-  };
   return (
     <div className="login-button">
       <form onSubmit={handleRegister}>
         <label>
           <h1>Username:</h1>
-          <input type="text" handleUsername={setUserName()} />
+          <input type="text" />
         </label>
         <label>
           <h1>Password:</h1>
-          <input type="text" handlePassword={setPassWord} />
+          <input type="text" />
         </label>
         <button>Register</button>
       </form>
