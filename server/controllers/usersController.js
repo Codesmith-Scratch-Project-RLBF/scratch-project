@@ -1,4 +1,4 @@
-const Users = '../models/usersModel';
+const Users = require('../models/usersModel');
 
 const usersController = {};
 
@@ -21,7 +21,9 @@ usersController.find = (req, res, next) => {
 
 usersController.updateuser = (req, res, next) => {
   const { username } = req.params;
-  const { /* NEEDS UPDATES */  } = req.body;
+  const {
+    /* NEEDS UPDATES */
+  } = req.body;
 
   //note anyone can update anyone if they know the end points
   Users.findOneAndUpdate({ username }, { username: newName }, { new: true })
