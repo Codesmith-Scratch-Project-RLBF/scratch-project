@@ -20,11 +20,12 @@ app.get('/auth/', authController.validateuser, (req, res) => {
 });
 // get other user
 app.get('/users/:username', usersController.find, (req, res) => {
-  if (res.locals.length) {
-    return res.status(200).json(res.locals.storage);
-  } else {
-    res.status(204).send('No users found');
-  }
+    if (res.locals.storage){
+        return res.status(200).json(res.locals.storage);
+    }
+    else {
+        return res.status(204).send('No users found')
+    }
 });
 //create user
 app.post('/auth/', authController.createuser, (req, res) => {
