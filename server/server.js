@@ -16,11 +16,11 @@ app.get('/auth/', (req, res) => {
 });
 // get other user
 app.get('/users/:username', usersController.find, (req, res) => {
-    if (res.locals.length){
+    if (res.locals.storage){
         return res.status(200).json(res.locals.storage);
     }
     else {
-        res.status(204).send('No users found')
+        return res.status(204).send('No users found')
     }
     
     
