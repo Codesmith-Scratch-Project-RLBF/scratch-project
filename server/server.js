@@ -7,6 +7,30 @@ const PORT = 3000;
 // body parser 
 app.use(express.json());
 
+// get user who signed in ONLY USING USER NAME FOR QUERY
+app.get('/auth/?username', (req,res) => {
+    return res.status(200).json(res.locals./*SOMETHING*/);
+})
+
+
+// get other user
+app.get('/users/:username', (req,res) => {
+    return res.status(200).json(res.locals./*SOMETHING*/)
+
+})
+app.post('/users/', (req,res) => {
+    return res.status(200).json(res.locals./*SOMETHING*/)
+
+})
+app.patch('/users/:username', (req,res) => {
+    return res.status(200).json(res.locals./*SOMETHING*/)
+
+})
+app.delete('/users/:username', (req,res) => {
+    return res.status(200).json(res.locals./*SOMETHING*/)
+
+})
+
 
 
 
