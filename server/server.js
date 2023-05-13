@@ -31,11 +31,11 @@ app.post('/auth/', authController.createuser, (req, res) => {
   return res.status(200).json(res.locals.storage);
 });
 //update users free time
-app.patch('/users/:username', (req, res) => {
+app.patch('/users/:username',usersController.updateuser,  (req, res) => {
   return res.status(200).json(res.locals.storage);
 });
 //delete user
-app.delete('/users/:username', (req, res) => {
+app.delete('/users/:username',usersController.deleteuser, (req, res) => {
   return res.status(200).json(res.locals.storage);
 });
 

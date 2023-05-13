@@ -21,33 +21,39 @@ usersController.find = (req, res, next) => {
 
 usersController.updateuser = (req, res, next) => {
   const { username } = req.params;
-  const {
-    /* NEEDS UPDATES */
-  } = req.body;
+
+  const { monday , tuesday, wednesday, thursday, friday, saturday, sunday  } = req.body;
 
   //note anyone can update anyone if they know the end points
-  Users.findOneAndUpdate({ username }, { username: newName }, { new: true })
+  Users.findOneAndUpdate({ username }, { monday , tuesday, wednesday, thursday, friday, saturday, sunday }, { new: true })
     .then((user) => {
-      if (!user) {
-        return next({
-          log: 'Express error handler caught usersController.update middleware error',
-          status: 400,
-          message: { err: 'Failed to update user' },
-        });
-      }
-
       res.locals.storage = user;
       return next();
     })
     .catch((err) => {
       return next({
-        log: 'Express error handler caught usersController.update middleware error',
+        log: 'Express error handler caught usersController.updateuser middleware error',
         status: 400,
         message: { err: 'Failed to update user' },
       });
     });
 };
 
-usersController.deleteuser = (req, res, next) => {};
+usersController.deleteuser = (req, res, next) => {
+    const {username} = req.params
+    res.locals.storage = user;
+
+    Users.delete({username}) .then((user) => {
+        return next();
+      })
+      .catch((err) => {
+        return next({
+          log: 'Express error handler caught usersController.deleteuser middleware error',
+          status: 400,
+          message: { err: 'Failed to delete user' },
+        });
+      });
+
+};
 
 module.exports = usersController;
