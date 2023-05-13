@@ -8,7 +8,7 @@ const PORT = 3000;
 app.use(express.json());
 
 // get user who signed in ONLY USING USER NAME FOR QUERY
-app.get('/auth/?username', (req,res) => {
+app.get('/auth/', (req,res) => {
     return res.status(200).json(res.locals./*SOMETHING*/);
 })
 
@@ -18,7 +18,7 @@ app.get('/users/:username', (req,res) => {
     return res.status(200).json(res.locals./*SOMETHING*/)
 
 })
-app.post('/users/', (req,res) => {
+app.post('/auth/', (req,res) => {
     return res.status(200).json(res.locals./*SOMETHING*/)
 
 })
@@ -30,10 +30,6 @@ app.delete('/users/:username', (req,res) => {
     return res.status(200).json(res.locals./*SOMETHING*/)
 
 })
-
-
-
-
 
 
 
