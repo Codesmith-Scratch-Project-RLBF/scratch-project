@@ -41,7 +41,7 @@ usersController.updateuser = (req, res, next) => {
 
 usersController.deleteuser = (req, res, next) => {
     const {username} = req.params
-    res.locals.storage = user;
+    res.locals.storage = username;
 
     Users.delete({username}) .then((user) => {
         return next();
