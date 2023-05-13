@@ -1,4 +1,4 @@
-const Users = '../models/usersModel';
+const Users = require('../models/usersModel');
 
 const authController = {};
 

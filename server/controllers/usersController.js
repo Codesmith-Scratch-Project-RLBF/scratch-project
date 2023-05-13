@@ -1,4 +1,4 @@
-const Users = '../models/usersModel';
+const Users = require('../models/usersModel');
 
 const usersController = {};
 
@@ -21,6 +21,7 @@ usersController.find = (req, res, next) => {
 
 usersController.updateuser = (req, res, next) => {
   const { username } = req.params;
+
   const { monday , tuesday, wednesday, thursday, friday, saturday, sunday  } = req.body;
 
   //note anyone can update anyone if they know the end points
