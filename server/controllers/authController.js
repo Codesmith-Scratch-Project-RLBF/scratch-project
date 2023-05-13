@@ -1,8 +1,28 @@
-const Users = '../models/usersModel';
+const Users = require('../models/usersModel');
 
 const authController = {};
 
-authController.validateuser = (req, res, next) => {};
+authController.validateuser = (req, res, next) => {
+  console.log('-----> Attempting to Validate User!');
+  const { username, password } = req.query;
+
+  Users.findOne({ username, password })
+    .then((response) => {
+      if (response) {
+        console.log('-----> User Validated');
+        res.locals.storage = response;
+      }
+
+      return next();
+    })
+    .catch((error) => {
+      return next({
+        log: 'Express error handler caught! authController.validateuser middleware error',
+        status: 400,
+        message: error,
+      });
+    });
+};
 
 authController.createuser = (req, res, next) => {
   console.log('-----> Attempting to Create User!');
@@ -35,6 +55,7 @@ authController.createuser = (req, res, next) => {
       return next({
         log: 'Express error handler caught! authController.createuser middleware error',
         message: error,
+        status: 400,
       });
     });
 };
