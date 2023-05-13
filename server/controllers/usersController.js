@@ -2,7 +2,30 @@ const Users = '../models/usersModel';
 
 const usersController = {};
 
-usersController.finduser = (req, res, next) => {};
+usersController.find = (req, res, next) => {
+  const { username } = req.params;
+
+  Users.findOne({ username })
+    .then((user) => {
+      if (!user) {
+        return next({
+          log: 'Express error handler caught usersController.findOne middleware error',
+          status: 400,
+          message: { err: 'Failed to get user' },
+        });
+      }
+
+      res.locals.storage = user;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'Express error handler caught usersController.findOne middleware error',
+        status: 400,
+        message: { err: 'Failed to get user' },
+      });
+    });
+};
 
 usersController.createuser = (req, res, next) => {};
 
