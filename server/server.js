@@ -11,22 +11,23 @@ const PORT = 3000;
 app.use(express.json());
 
 // get user who signed in
-app.get('/auth/', (req, res) => {
-  return res.status(200).json(res.locals.storage);
+app.get('/auth/', authController.validateuser, (req, res) => {
+  if (res.locals.storage) {
+    return res.status(200).json(res.locals.storage);
+  } else {
+    return res.status(204).json('Wrong username or password!');
+  }
 });
 // get other user
 app.get('/users/:username', usersController.find, (req, res) => {
-    if (res.locals.length){
-        return res.status(200).json(res.locals.storage);
-    }
-    else {
-        res.status(204).send('No users found')
-    }
-    
-    
+  if (res.locals.length) {
+    return res.status(200).json(res.locals.storage);
+  } else {
+    res.status(204).send('No users found');
+  }
 });
 //create user
-app.post('/auth/', (req, res) => {
+app.post('/auth/', authController.createuser, (req, res) => {
   return res.status(200).json(res.locals.storage);
 });
 //update users free time
