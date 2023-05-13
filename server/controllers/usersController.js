@@ -27,8 +27,6 @@ usersController.find = (req, res, next) => {
     });
 };
 
-usersController.createuser = (req, res, next) => {};
-
 usersController.updateuser = (req, res, next) => {};
 
 usersController.deleteuser = (req, res, next) => {};
