@@ -8,7 +8,6 @@ authController.validateuser = (req, res, next) => {
 
   Users.findOne({ username, password })
     .then((response) => {
-      
       if (response) {
         console.log('-----> User Validated');
         res.locals.storage = response;
@@ -56,6 +55,7 @@ authController.createuser = (req, res, next) => {
       return next({
         log: 'Express error handler caught! authController.createuser middleware error',
         message: error,
+        status: 400,
       });
     });
 };
