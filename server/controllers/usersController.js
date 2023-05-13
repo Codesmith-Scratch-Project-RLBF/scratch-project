@@ -48,7 +48,7 @@ usersController.deleteuser = (req, res, next) => {
     const {username} = req.params
     res.locals.storage = username;
 
-  Users.delete({ username })
+  Users.deleteOne({ username })
     .then((user) => {
       return next();
     })
