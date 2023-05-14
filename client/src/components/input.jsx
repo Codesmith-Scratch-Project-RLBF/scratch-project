@@ -1,5 +1,6 @@
 import React from 'react';
 import { daysOfTheWeek, timeframes } from './timesData';
+import { timeframes } from './timeframes';
 
 const Input = () => {
   const handleAdd = async () => {
@@ -13,7 +14,11 @@ const Input = () => {
         Pick a timeframe
         <select>
           {timeframes.map((timeframe, index) => {
-            return <option value={index}>{timeframe} </option>;
+            return (
+              <option key={timeframe} value={index}>
+                {timeframe}
+              </option>
+            );
           })}
         </select>
       </label>
@@ -21,7 +26,11 @@ const Input = () => {
         Pick a day
         <select>
           {daysOfTheWeek.map((day) => {
-            return <option value={day}>{day}</option>;
+            return (
+              <option key={day} value={day}>
+                {day}
+              </option>
+            );
           })}
         </select>
       </label>
