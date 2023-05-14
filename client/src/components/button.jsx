@@ -22,7 +22,8 @@ const Button = () => {
   };
   return (
     <div className='buttons'>
-      <button oncClick={handleLogout}>Log out</button>
+      <h2>Account Actions</h2>
+      <button onClick={handleLogout}>Log out</button>
       <button onClick={handleDelete}>Delete account</button>
     </div>
   );

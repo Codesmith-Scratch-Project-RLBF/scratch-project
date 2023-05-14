@@ -1,7 +1,13 @@
 .fill {
-  background: red;
+  background: steelblue;
 }
 
 .empty {
-  background-color: gray;
+  // background-color: gray;
+  border-top: 1px solid rgb(216, 216, 216);
+}
+.fill,
+.empty {
+  height: 40px;
+  // background-color: aqua;
 }

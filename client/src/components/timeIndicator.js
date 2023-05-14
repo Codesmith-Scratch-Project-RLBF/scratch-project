@@ -1,9 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import './day.scss';
 import Time from './Time.jsx';
-const Day = (props) => {
-  const times = props.times;
+import './timeIndicator.scss';
+const TimeIndicator = () => {
   const timeSlotArray = [
     '12:00 am',
     '12:30 am',
@@ -42,6 +40,7 @@ const Day = (props) => {
     '5:00 pm',
     '5:30 pm',
     '6:00 pm',
+    '6:30 pm',
     '7:00 pm',
     '7:30 pm',
     '8:00 pm',
@@ -54,13 +53,16 @@ const Day = (props) => {
     '11:30 pm',
   ];
   return (
-    <div>
-      {times.map((element, index) => {
+    <div className='timeIndicatorHolder'>
+      {timeSlotArray.map((t) => {
         return (
-          <Time key={index} time={timeSlotArray[index]} isColored={element} />
+          <div key={t} className='time'>
+            {t}
+          </div>
         );
       })}
     </div>
   );
 };
-export default Day;
+
+export default TimeIndicator;

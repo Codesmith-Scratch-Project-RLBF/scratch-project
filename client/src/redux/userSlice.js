@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userName: null,
   timeFrames: {
-    // Monday: new Array(48).fill(false),
-    // Tuesday: new Array(48).fill(false),
-    // Wednesday: new Array(48).fill(false),
-    // Thursday: new Array(48).fill(false),
-    // Friday: new Array(48).fill(false),
-    // Saturday: new Array(48).fill(false),
-    // Sunday: new Array(48).fill(false),
+    Monday: new Array(48).fill(false),
+    Tuesday: new Array(48).fill(false),
+    Wednesday: new Array(48).fill(false),
+    Thursday: new Array(48).fill(false),
+    Friday: new Array(48).fill(false),
+    Saturday: new Array(48).fill(false),
+    Sunday: new Array(48).fill(false),
   },
   users: [],
 };

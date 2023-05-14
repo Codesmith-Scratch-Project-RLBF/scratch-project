@@ -1,0 +1,22 @@
+.userNamesContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h2 {
+    color: steelblue;
+    margin-bottom: 50px;
+  }
+  .userName {
+    font-weight: italic;
+    font-size: 18px;
+  }
+  .nameHolder {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: max-content;
+  }
+}

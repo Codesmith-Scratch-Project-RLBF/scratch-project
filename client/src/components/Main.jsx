@@ -4,17 +4,23 @@ import Usernames from './usernames.jsx';
 import Button from './button.jsx';
 import Input from './input.jsx';
 import { useSelector } from 'react-redux';
-
+import './main.scss';
+import TimeIndicator from './timeIndicator';
 function Main() {
   const { userName, timeFrames, users } = useSelector((state) => {
     return state.user;
   });
   return (
-    <div>
-      <Input />
-      <Button />
-      <Usernames users = {users}/>
-      <Calendar time = {timeFrames}/>
+    <div className='main'>
+      <div className='optionsHolder'>
+        <Usernames users={users} />
+        <Input />
+        <Button />
+      </div>
+      <div className='calendarHolder'>
+        <TimeIndicator />
+        <Calendar time={timeFrames} />
+      </div>
     </div>
   );
 }
