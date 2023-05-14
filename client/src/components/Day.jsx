@@ -56,7 +56,7 @@ const Day = (props) => {
     <div>
       {times.map((element, index) => {
         return (
-          <Time key={index} time={timeSlotArray[index]} isColored={times} />
+          <Time key={index} time={timeSlotArray[index]} isColored={element} />
         );
       })}
     </div>

@@ -30,6 +30,7 @@ export const userSlice = createSlice({
       state.userName = null;
       state.timeFrames = {};
     },
+
     addTime: (state, action) => {
       const { index, day } = action.payload;
       state.timeFrames[day][index] = true;
@@ -39,6 +40,7 @@ export const userSlice = createSlice({
     },
   },
 });
-export const { signupUser, loginUser, logoutUser } = userSlice.actions;
+export const { signupUser, loginUser, logoutUser, addTime, deleteUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;
