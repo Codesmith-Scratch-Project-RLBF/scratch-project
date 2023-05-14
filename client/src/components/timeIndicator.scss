@@ -1,0 +1,14 @@
+.timeIndicatorHolder {
+  margin-top: 51px;
+  display: flex;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  //   background-color: aquamarine;
+  .time {
+    width: 100px;
+    height: 40px;
+    border-top: 1px solid rgb(221, 221, 221);
+  }
+}

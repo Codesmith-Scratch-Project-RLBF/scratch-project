@@ -1,16 +1,26 @@
 import React from 'react';
 import { useState } from 'react';
 import { loginUser } from '../redux/userSlice';
-
+import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import './signInUp.scss';
 const Login = () => {
-  const [username, setUserName] = useState();
-  const [password, setPassWord] = useState();
+  const [cred, setCred] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
+    event.preventDefault();
+    console.log('handle login started');
+
     try {
-      const response = await axios.get('/auth/', {
-        username: username,
-        password: password,
+      console.log('cred: login ', cred);
+      const response = await fetch('/auth/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cred),
       });
       const loggedinUser = await response.json();
       const userName = loggedinUser.username;
@@ -26,17 +36,22 @@ const Login = () => {
       console.log(error);
     }
   };
-
+  const handleChange = (e) => {
+    setCred((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
   return (
-    <div className='login-button'>
+    <div className='auth'>
+      <h1>Sign In</h1>
       <form onSubmit={handleLogin}>
         <label>
-          <h1>Username:</h1>
-          <input type='text' />
+          <p>Username:</p>
+          <input name='username' type='text' onChange={handleChange} />
         </label>
         <label>
-          <h1>Password:</h1>
-          <input type='text' />
+          <p>Password:</p>
+          <input name='password ' type='text' onChange={handleChange} />
         </label>
         <button>Log-in</button>
       </form>

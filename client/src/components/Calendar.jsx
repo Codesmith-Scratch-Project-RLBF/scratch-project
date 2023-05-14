@@ -7,9 +7,9 @@ const Calendar = (props) => {
   let timeFrames = props.time;
 
   return (
-    <div className="day">
+    <div className='day'>
       {Object.keys(timeFrames).map((day) => (
-        <div className = "dayCalendar" key={day}>
+        <div className='dayCalendar' key={day}>
           <p>{day}</p>
           <Day times={timeFrames[day]} />
         </div>

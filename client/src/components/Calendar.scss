@@ -1,12 +1,17 @@
 .day {
   display: flex;
-  gap: 50px;
+  // gap: 50px;
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid rgb(212, 212, 212);
   justify-content: center;
 }
 
 .dayCalendar {
-  border: 1px solid black;
+  border-right: 1px solid rgb(201, 201, 201);
   width: 100%;
+  p {
+    font-weight: bold;
+    color: steelblue;
+    text-align: center;
+  }
 }
