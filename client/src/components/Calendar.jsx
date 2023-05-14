@@ -2,15 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import Day from './Day';
 
-const Calendar = () => {
-  const [timeFrame, setTimeFrame] = useState();
+const Calendar = (props) => {
+  timeFrames = props.timeFrames;
 
   return (
     <div>
-      {Object.keys(timeFrame).map((day) => (
+      {Object.keys(timeFrames).map((day) => (
         <div key={day}>
           <p>{day}</p>
-          <Day times={timeFrame[day]} />
+          <Day times={timeFrames[day]} />
         </div>
       ))}
     </div>
