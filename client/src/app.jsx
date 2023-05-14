@@ -4,10 +4,11 @@ import Calendar from './components/Calendar';
 import Register from './components/Register';
 import Auth from './components/Auth';
 import { useSelector, useDispatch } from 'react-redux';
+import Main from './components/Main';
 
 const App = () => {
   <Routes>
-    <Route path="/" element={<Auth />} />
+    <Route path="/" element={<Main />} />
   </Routes>;
 };
 

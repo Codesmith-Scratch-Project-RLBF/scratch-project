@@ -1,13 +1,11 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 
 const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassWord] = useState();
 
-  const handleLogin = async (event) => {
-
-  };
+  const handleLogin = async (event) => {};
 
   return (
     <div className="login-button">
