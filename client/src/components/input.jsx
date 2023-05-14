@@ -1,6 +1,5 @@
 import React from 'react';
-import { daysOfTheWeek, timeframes } from './timesData';
-import { timeframes } from './timeframes';
+import { timeframes, daysOfTheWeek } from './timeframes';
 
 const Input = () => {
   const handleAdd = async () => {
