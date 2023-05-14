@@ -1,9 +1,8 @@
 import React from 'react';
-import Calendar from './Calendar';
-import Usernames from './usernames';
-import Button from './button';
-import React from 'react';
-import Input from './input';
+import Calendar from './Calendar.jsx';
+import Usernames from './usernames.jsx';
+import Button from './button.jsx';
+import Input from './input.jsx';
 
 function Main() {
   return (
