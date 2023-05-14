@@ -2,7 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   userName: null,
-  timeFrames: {},
+  timeFrames: {
+    Monday: new Array(48).fill(false),
+    Tuesday: new Array(48).fill(false),
+    Wednesday: new Array(48).fill(false),
+    Thursday: new Array(48).fill(false),
+    Friday: new Array(48).fill(false),
+    Saturday: new Array(48).fill(false),
+    Sunday: new Array(48).fill(false),
+  },
+  users: [],
 };
 
 export const userSlice = createSlice({
@@ -20,6 +29,13 @@ export const userSlice = createSlice({
     logoutUser: (state) => {
       state.userName = null;
       state.timeFrames = {};
+    },
+    addTime: (state, action) => {
+      const { index, day } = action.payload;
+      state.timeFrames[day][index] = true;
+    },
+    deleteUser: (state) => {
+      state = initialState;
     },
   },
 });
