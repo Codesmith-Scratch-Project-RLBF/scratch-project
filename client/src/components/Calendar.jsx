@@ -1,18 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
-import Day from './Day';
+import Day from './Day.jsx';
 
 const Calendar = (props) => {
-  timeFrames = props.timeFrames;
+  let timeFrames = props.timeFrames;
 
   return (
     <div>
-      {Object.keys(timeFrames).map((day) => (
+        <div>calendar component</div>
+      {/* {Object.keys(timeFrames).map((day) => (
         <div key={day}>
           <p>{day}</p>
           <Day times={timeFrames[day]} />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -1,14 +1,16 @@
 import ReactDOM from 'react-dom/client';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Calendar from './components/Calendar';
-import Register from './components/Register';
-import Auth from './components/Auth';
 import { useSelector, useDispatch } from 'react-redux';
+import Main from './components/Main.jsx';
 
 const App = () => {
-  <Routes>
-    <Route path="/" element={<Auth />} />
-  </Routes>;
+  return (
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+
+  );
 };
 
 export default App;

@@ -5,13 +5,14 @@ const UserNames = (props) => {
 
   return (
     <div className='userNamesContainer'>
-      {userNames.map((userName) => {
+      <div>username component</div>
+      {/* {userNames.map((userName) => {
         return (
           <p key={userName} className='userName'>
             {userName}
           </p>
         );
-      })}
+      })} */}
     </div>
   );
 };

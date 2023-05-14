@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Time from './Time'
+import Time from './Time.jsx';
 const Day = (props) => {
   const times = props.times;
   const timeSlotArray = [
@@ -62,3 +62,4 @@ const Day = (props) => {
     </div>
   );
 };
+export default Day;
