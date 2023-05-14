@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userName: null,
   timeFrames: {
-    Monday: new Array(48).fill(false),
-    Tuesday: new Array(48).fill(false),
-    Wednesday: new Array(48).fill(false),
-    Thursday: new Array(48).fill(false),
-    Friday: new Array(48).fill(false),
-    Saturday: new Array(48).fill(false),
-    Sunday: new Array(48).fill(false),
+    // Monday: new Array(48).fill(false),
+    // Tuesday: new Array(48).fill(false),
+    // Wednesday: new Array(48).fill(false),
+    // Thursday: new Array(48).fill(false),
+    // Friday: new Array(48).fill(false),
+    // Saturday: new Array(48).fill(false),
+    // Sunday: new Array(48).fill(false),
   },
   users: [],
 };
@@ -23,8 +23,8 @@ export const userSlice = createSlice({
       state.timeFrames = action.payload;
     },
     loginUser: (state, action) => {
-      state.userName = action.payload;
-      state.timeFrames = action.payload;
+      state.userName = action.payload.userName;
+      state.timeFrames = action.payload.timeFrames;
     },
     logoutUser: (state) => {
       state.userName = null;
@@ -37,6 +37,9 @@ export const userSlice = createSlice({
     },
     deleteUser: (state) => {
       state = initialState;
+    },
+    setupUsers: (state, action) => {
+      state.users = action.payload;
     },
   },
 });

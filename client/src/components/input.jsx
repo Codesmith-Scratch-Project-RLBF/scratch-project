@@ -13,17 +13,15 @@ const Input = () => {
   const username = useSelector((state) => {
     return state.user.username;
   });
-  
+
   const handleAdd = async () => {
-    try{
-    axios.patch(`/users/${username}`);
+    try {
+      const response = await axios.patch(`/users/${username}`);
+      const newTimeFrames = await response.json();
+    } catch (err) {
+      console.log(err);
     }
-    catch(err){
-      
-    }
-    //update the corresponding box value from false to true
-    //use userReducer function todo that,then ui updates
-    //also send the data to the backend with fetch:patch request
+
     dispatch(addTime({ index: Number(index), day: day }));
   };
 
@@ -36,7 +34,7 @@ const Input = () => {
   };
 
   return (
-    <div className="inputContainer">
+    <div className='inputContainer'>
       <label>
         Pick a timeframe
         <select onChange={handleIndexChange}>
