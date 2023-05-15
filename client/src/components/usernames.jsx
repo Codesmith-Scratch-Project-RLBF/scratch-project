@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setOtherTimeFrame } from '../redux/userSlice';
 const UserNames = (props) => {
   const { users } = props;
+  console.log(users);
   const dispatch = useDispatch();
   const userName = [
     'Jimmy',
@@ -16,6 +17,7 @@ const UserNames = (props) => {
   ];
 
   const handleClick = async (username) => {
+    console.log(username);
     const res = await fetch(`/users/${username}`);
     const data = await res.json();
     const otherTimeFrames = {};
@@ -29,7 +31,7 @@ const UserNames = (props) => {
         otherTimeFrames[key] = data[key];
       }
     }
-
+    console.log('username component: ', otherTimeFrames);
     dispatch(setOtherTimeFrame({ otherTimeFrames }));
   };
 
@@ -37,7 +39,7 @@ const UserNames = (props) => {
     <div className='userNamesContainer'>
       <h2>See other users schedule</h2>
       <div className='nameHolder'>
-        {userName.map((user) => {
+        {users?.map((user) => {
           return (
             <p
               key={user}

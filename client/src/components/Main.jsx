@@ -12,6 +12,7 @@ function Main() {
       return state.user;
     }
   );
+  console.log(otherTimeFrame);
   return (
     <div className='main'>
       <div className='optionsHolder'>
@@ -21,7 +22,7 @@ function Main() {
       </div>
       <div className='calendarHolder'>
         <TimeIndicator />
-        <Calendar time={timeFrames} others={otherTimeFrame} />
+        <Calendar time={timeFrames} otherTimeFrame={otherTimeFrame} />
       </div>
     </div>
   );

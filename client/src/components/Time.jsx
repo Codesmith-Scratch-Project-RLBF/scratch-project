@@ -4,14 +4,13 @@ import './Time.scss';
 const Time = (props) => {
   const { time, isColored } = props;
   let paint;
-  if (isColored === true) {
-    paint = 'fill';
-  }
-  if (isColored === false) {
-    paint = 'empty';
-  }
+  console.log(isColored);
   if (isColored === 'multi') {
     paint = 'multi';
+  } else if (isColored === true) {
+    paint = 'fill';
+  } else if (isColored === false) {
+    paint = 'empty';
   }
 
   return <div className={paint}></div>;

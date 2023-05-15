@@ -29,9 +29,14 @@ const Register = () => {
         }
       }
 
-      const responseUsers = await fetch('');
-      const usersData = responseUsers.json();
-
+      const responseUsers = await fetch(`/users/__all`);
+      const users = await responseUsers.json();
+      const usersData = [];
+      for (let user in users) {
+        usersData.push(users[user].username);
+      }
+      console.log(usersData);
+      ///do logic to turn object to  userName array
       dispatch(signupUser({ userName, timeFrames, usersData }));
       navigate('/main');
     } catch (error) {

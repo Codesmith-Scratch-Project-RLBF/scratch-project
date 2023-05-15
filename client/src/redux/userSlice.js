@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userName: null,
   timeFrames: null,
-  users: null,
-  otherTimeFrame: null,
+  users: [],
+  otherTimeFrame: {},
 };
 
 export const userSlice = createSlice({
@@ -20,10 +20,12 @@ export const userSlice = createSlice({
     loginUser: (state, action) => {
       state.userName = action.payload.userName;
       state.timeFrames = action.payload.timeFrames;
+      state.users = action.payload.usersData;
     },
     logoutUser: (state) => {
       state.userName = null;
       state.timeFrames = {};
+      state.otherTimeFrame = {};
     },
 
     addTime: (state, action) => {
