@@ -2,16 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   userName: null,
-  timeFrames: {
-    Monday: new Array(48).fill(false),
-    Tuesday: new Array(48).fill(false),
-    Wednesday: new Array(48).fill(false),
-    Thursday: new Array(48).fill(false),
-    Friday: new Array(48).fill(false),
-    Saturday: new Array(48).fill(false),
-    Sunday: new Array(48).fill(false),
-  },
-  users: [],
+  timeFrames: null,
+  users: null,
 };
 
 export const userSlice = createSlice({
@@ -19,8 +11,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signupUser: (state, action) => {
-      state.userName = action.payload;
-      state.timeFrames = action.payload;
+      const { userName, timeFrames } = action.payload;
+      state.userName = userName;
+      state.timeFrames = timeFrames;
     },
     loginUser: (state, action) => {
       state.userName = action.payload.userName;
@@ -32,6 +25,8 @@ export const userSlice = createSlice({
     },
 
     addTime: (state, action) => {
+      console.log(index, day);
+      console.log('action,payload', action.payload);
       const { index, day } = action.payload;
       state.timeFrames[day][index] = true;
     },
