@@ -65,7 +65,7 @@ const Login = () => {
         </label>
         <label>
           <p>Password:</p>
-          <input name='password ' type='text' onChange={handlePassChange} />
+          <input name='password ' type='password' onChange={handlePassChange} />
         </label>
         <button>Log-in</button>
       </form>
