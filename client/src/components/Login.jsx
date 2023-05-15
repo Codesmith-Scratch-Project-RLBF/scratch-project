@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import './signInUp.scss';
 const Login = () => {
-  const [cred, setCred] = useState({});
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,19 +16,20 @@ const Login = () => {
     console.log('handle login started');
 
     try {
-      console.log('cred: login ', cred);
-      const response = await fetch('/auth/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(cred),
-      });
+      const response = await fetch(
+        `/auth/?username=${username}&password=${password}`
+      );
       const loggedinUser = await response.json();
+      console.log(loggedinUser);
       const userName = loggedinUser.username;
       const timeFrames = {};
       for (const key in loggedinUser) {
-        if (key !== 'username' && key !== 'password') {
+        if (
+          key !== 'username' &&
+          key !== 'password' &&
+          key !== '__v' &&
+          key !== '_id'
+        ) {
           timeFrames[key] = loggedinUser[key];
         }
       }
@@ -36,10 +39,13 @@ const Login = () => {
       console.log(error);
     }
   };
-  const handleChange = (e) => {
-    setCred((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
+  const handleNameChange = (e) => {
+    setUsername(e.target.value);
+    console.log(e.target.value);
+  };
+  const handlePassChange = (e) => {
+    setPassword(e.target.value);
+    console.log(e.target.value);
   };
   return (
     <div className='auth'>
@@ -47,11 +53,11 @@ const Login = () => {
       <form onSubmit={handleLogin}>
         <label>
           <p>Username:</p>
-          <input name='username' type='text' onChange={handleChange} />
+          <input name='username' type='text' onChange={handleNameChange} />
         </label>
         <label>
           <p>Password:</p>
-          <input name='password ' type='text' onChange={handleChange} />
+          <input name='password ' type='text' onChange={handlePassChange} />
         </label>
         <button>Log-in</button>
       </form>

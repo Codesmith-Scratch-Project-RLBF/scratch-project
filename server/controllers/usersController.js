@@ -22,15 +22,10 @@ usersController.find = (req, res, next) => {
 usersController.updateuser = (req, res, next) => {
   const { username } = req.params;
 
-  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } =
-    req.body;
+  const { updatedDay, day } = req.body;
 
   //note anyone can update anyone if they know the end points
-  Users.findOneAndUpdate(
-    { username },
-    { monday, tuesday, wednesday, thursday, friday, saturday, sunday },
-    { new: true }
-  )
+  Users.findOneAndUpdate({ username }, { [day]: updatedDay }, { new: true })
     .then((user) => {
       res.locals.storage = user;
       return next();
@@ -45,8 +40,8 @@ usersController.updateuser = (req, res, next) => {
 };
 
 usersController.deleteuser = (req, res, next) => {
-    const {username} = req.params
-    res.locals.storage = username;
+  const { username } = req.params;
+  res.locals.storage = username;
 
   Users.deleteOne({ username })
     .then((user) => {

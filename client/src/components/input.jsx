@@ -6,8 +6,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import './input.scss';
 const Input = () => {
-  const [index, setIndex] = useState();
-  const [day, setDay] = useState();
+  const [index, setIndex] = useState(0);
+  const [day, setDay] = useState('monday');
   const dispatch = useDispatch();
 
   const user = useSelector((state) => {
@@ -16,13 +16,21 @@ const Input = () => {
 
   const handleAdd = async () => {
     console.log('index,day', index, day);
+    dispatch(addTime({ index, day }));
+    console.log('user timeframes: ', user.timeFrames);
+    const updatedDay = [...user.timeFrames[day]];
+    updatedDay[index] = true;
     try {
-      const response = await axios.patch(`/users/${username}`);
-      const newTimeFrames = await response.json();
+      const response = await fetch(`/users/${user.userName}`, {
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ updatedDay, day }),
+        method: 'PATCH',
+      });
     } catch (err) {
       console.log(err);
     }
-    dispatch(addTime({ index, day }));
   };
 
   const handleIndexChange = (event) => {
