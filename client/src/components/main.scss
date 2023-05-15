@@ -6,10 +6,13 @@
     color: steelblue;
   }
   .optionsHolder {
+    margin-top: 50px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    align-items: start;
+    justify-content: start;
     margin-bottom: 100px;
+    gap: 100px;
+    margin-left: 50px;
   }
   .calendarHolder {
     display: flex;

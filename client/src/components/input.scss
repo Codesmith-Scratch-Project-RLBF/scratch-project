@@ -1,17 +1,25 @@
 .inputContainer {
-  flex: 1;
-  //   background-color: blueviolet;
-  margin-right: 50px;
+  // flex: 1;
+  // background-color: blueviolet;
+  // margin-right: 50px;
+  span {
+    margin-right: 20px;
+    width: 100px;
+    // background-color: aqua;
+  }
+  .daySelect {
+    // margin-left: 80px;
+  }
   h2 {
     color: steelblue;
   }
   label {
-    width: 40%;
+    width: 90%;
     font-size: 16px;
     // background-color: aqua;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     select {
       border: 1px solid rgb(218, 218, 218);
       border-radius: 5px;
@@ -25,11 +33,12 @@
     height: 30px;
     width: 150px;
     border-radius: 5px;
+    cursor: pointer;
   }
-  padding-top: 50px;
+  // padding-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }

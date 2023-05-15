@@ -1,11 +1,11 @@
 .buttons {
   //   height: 100%;
-  flex: 0.5;
+  // flex: 0.5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
-  //   background-color: brown;
+  gap: 20px;
+  // background-color: brown;
   justify-content: space-around;
   button {
     border: none;
@@ -14,5 +14,6 @@
     height: 30px;
     width: 150px;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
