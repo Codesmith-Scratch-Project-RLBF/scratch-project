@@ -18,9 +18,7 @@ usersController.find = (req, res, next) => {
           message: { err: 'Failed to get user' },
         });
       });
-  
     }
-  
     else {
       Users.findOne({ username })
       .then((user) => {
@@ -34,7 +32,6 @@ usersController.find = (req, res, next) => {
           message: { err: 'Failed to get user' },
         });
       });
-
 };
 
 usersController.updateuser = (req, res, next) => {
