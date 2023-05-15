@@ -1,4 +1,6 @@
 const Users = require('../models/usersModel');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const authController = {};
 
@@ -6,14 +8,21 @@ authController.validateuser = (req, res, next) => {
   console.log('-----> Attempting to Validate User!');
   const { username, password } = req.query;
 
-  Users.findOne({ username, password })
+  Users.findOne({ username })
     .then((response) => {
       if (response) {
-        console.log('-----> User Validated');
-        res.locals.storage = response;
+        console.log('-----> Comparing Password to Hash!');
+        const hash = response.password;
+        bcrypt.compare(password, hash).then((result) => {
+          if (result) {
+            console.log('-----> User Validated!');
+            res.locals.storage = response;
+          } else {
+            console.log('-----> Wrong password!');
+          }
+          return next();
+        });
       }
-
-      return next();
     })
     .catch((error) => {
       return next({
@@ -33,7 +42,8 @@ authController.createuser = (req, res, next) => {
   const friday = new Array(48).fill(false);
   const saturday = new Array(48).fill(false);
   const sunday = new Array(48).fill(false);
-  const { username, password } = req.body;
+  const { username } = req.body;
+  const password = res.locals.hash;
 
   Users.create({
     username,
@@ -54,6 +64,25 @@ authController.createuser = (req, res, next) => {
     .catch((error) => {
       return next({
         log: 'Express error handler caught! authController.createuser middleware error',
+        message: error,
+        status: 400,
+      });
+    });
+};
+
+authController.hashpassword = (req, res, next) => {
+  console.log('Hashing password!');
+  const { password } = req.body;
+  bcrypt
+    .hash(password, saltRounds)
+    .then((hash) => {
+      console.log(hash);
+      res.locals.hash = hash;
+      return next();
+    })
+    .catch((error) => {
+      return next({
+        log: 'Express error handler caught! authController.hashpassword middleware error',
         message: error,
         status: 400,
       });

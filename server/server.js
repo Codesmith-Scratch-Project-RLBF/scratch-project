@@ -20,23 +20,27 @@ app.get('/auth/', authController.validateuser, (req, res) => {
 });
 // get other user
 app.get('/users/:username', usersController.find, (req, res) => {
-    if (res.locals.storage){
-        return res.status(200).json(res.locals.storage);
-    }
-    else {
-        return res.status(204).send('No users found')
-    }
+  if (res.locals.storage) {
+    return res.status(200).json(res.locals.storage);
+  } else {
+    return res.status(204).send('No users found');
+  }
 });
 //create user
-app.post('/auth/', authController.createuser, (req, res) => {
-  return res.status(200).json(res.locals.storage);
-});
+app.post(
+  '/auth/',
+  authController.hashpassword,
+  authController.createuser,
+  (req, res) => {
+    return res.status(200).json(res.locals.storage);
+  }
+);
 //update users free time
-app.patch('/users/:username',usersController.updateuser,  (req, res) => {
+app.patch('/users/:username', usersController.updateuser, (req, res) => {
   return res.status(200).json(res.locals.storage);
 });
 //delete user
-app.delete('/users/:username',usersController.deleteuser, (req, res) => {
+app.delete('/users/:username', usersController.deleteuser, (req, res) => {
   return res.status(200).json(res.locals.storage);
 });
 
