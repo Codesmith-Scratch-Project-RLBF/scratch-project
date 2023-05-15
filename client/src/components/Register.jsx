@@ -28,7 +28,11 @@ const Register = () => {
           timeFrames[key] = newUser[key];
         }
       }
-      dispatch(signupUser({ userName, timeFrames }));
+
+      const responseUsers = await fetch('');
+      const usersData = responseUsers.json();
+
+      dispatch(signupUser({ userName, timeFrames, usersData }));
       navigate('/main');
     } catch (error) {
       console.log(error);

@@ -4,6 +4,7 @@ const initialState = {
   userName: null,
   timeFrames: null,
   users: null,
+  otherTimeFrame: null,
 };
 
 export const userSlice = createSlice({
@@ -11,9 +12,10 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signupUser: (state, action) => {
-      const { userName, timeFrames } = action.payload;
+      const { userName, timeFrames, usersData } = action.payload;
       state.userName = userName;
       state.timeFrames = timeFrames;
+      state.users = usersData;
     },
     loginUser: (state, action) => {
       state.userName = action.payload.userName;
@@ -36,9 +38,19 @@ export const userSlice = createSlice({
     setupUsers: (state, action) => {
       state.users = action.payload;
     },
+    setOtherTimeFrame: (state, action) => {
+      console.log(action.payload);
+      state.otherTimeFrame = action.payload.otherTimeFrames;
+    },
   },
 });
-export const { signupUser, loginUser, logoutUser, addTime, deleteUser } =
-  userSlice.actions;
+export const {
+  signupUser,
+  loginUser,
+  logoutUser,
+  addTime,
+  deleteUser,
+  setOtherTimeFrame,
+} = userSlice.actions;
 
 export default userSlice.reducer;
