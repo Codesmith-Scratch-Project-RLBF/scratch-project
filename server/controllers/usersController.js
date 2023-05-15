@@ -5,8 +5,8 @@ const usersController = {};
 usersController.find = (req, res, next) => {
   const { username } = req.params;
 
-    if (username === '__all'){
-      Users.find({ })
+  if (username === '__all') {
+    Users.find({})
       .then((users) => {
         res.locals.storage = users;
         return next();
@@ -18,9 +18,8 @@ usersController.find = (req, res, next) => {
           message: { err: 'Failed to get user' },
         });
       });
-    }
-    else {
-      Users.findOne({ username })
+  } else {
+    Users.findOne({ username })
       .then((user) => {
         res.locals.storage = user;
         return next();
@@ -32,6 +31,7 @@ usersController.find = (req, res, next) => {
           message: { err: 'Failed to get user' },
         });
       });
+  }
 };
 
 usersController.updateuser = (req, res, next) => {
