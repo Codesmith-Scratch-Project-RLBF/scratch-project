@@ -33,7 +33,15 @@ const Login = () => {
           timeFrames[key] = loggedinUser[key];
         }
       }
-      dispatch(loginUser({ userName, timeFrames }));
+
+      const responseUsers = await fetch(`/users/__all`);
+      const users = await responseUsers.json();
+      const usersData = [];
+      for (let user in users) {
+        usersData.push(users[user].username);
+      }
+
+      dispatch(loginUser({ userName, timeFrames, usersData }));
       navigate('/main');
     } catch (error) {
       console.log(error);

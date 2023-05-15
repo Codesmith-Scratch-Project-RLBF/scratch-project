@@ -1,13 +1,16 @@
 .fill {
   background: steelblue;
 }
-
 .empty {
   // background-color: gray;
   border-top: 1px solid rgb(216, 216, 216);
 }
 .fill,
-.empty {
+.empty,
+.multi {
   height: 40px;
-  // background-color: aqua;
+}
+
+.multi {
+  background-color: red;
 }

@@ -7,9 +7,12 @@ import { useSelector } from 'react-redux';
 import './main.scss';
 import TimeIndicator from './timeIndicator';
 function Main() {
-  const { userName, timeFrames, users } = useSelector((state) => {
-    return state.user;
-  });
+  const { userName, timeFrames, users, otherTimeFrame } = useSelector(
+    (state) => {
+      return state.user;
+    }
+  );
+  console.log(otherTimeFrame);
   return (
     <div className='main'>
       <div className='optionsHolder'>
@@ -19,7 +22,7 @@ function Main() {
       </div>
       <div className='calendarHolder'>
         <TimeIndicator />
-        <Calendar time={timeFrames} />
+        <Calendar time={timeFrames} otherTimeFrame={otherTimeFrame} />
       </div>
     </div>
   );
