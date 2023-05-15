@@ -5,18 +5,36 @@ const usersController = {};
 usersController.find = (req, res, next) => {
   const { username } = req.params;
 
-  Users.findOne({ username })
-    .then((user) => {
-      res.locals.storage = user;
-      return next();
-    })
-    .catch((err) => {
-      return next({
-        log: 'Express error handler caught usersController.find middleware error',
-        status: 400,
-        message: { err: 'Failed to get user' },
+    if (username === '__all'){
+      Users.find({ })
+      .then((users) => {
+        res.locals.storage = users;
+        return next();
+      })
+      .catch((err) => {
+        return next({
+          log: 'Express error handler caught usersController.find middleware error',
+          status: 400,
+          message: { err: 'Failed to get user' },
+        });
       });
-    });
+  
+    }
+  
+    else {
+      Users.findOne({ username })
+      .then((user) => {
+        res.locals.storage = user;
+        return next();
+      })
+      .catch((err) => {
+        return next({
+          log: 'Express error handler caught usersController.find middleware error',
+          status: 400,
+          message: { err: 'Failed to get user' },
+        });
+      });
+
 };
 
 usersController.updateuser = (req, res, next) => {
