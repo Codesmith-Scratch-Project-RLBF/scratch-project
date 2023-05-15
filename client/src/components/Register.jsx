@@ -12,9 +12,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log('handle register started');
     try {
-      console.log('cred: register ', cred);
       const response = await fetch('/auth/', {
         method: 'POST',
         headers: {
@@ -31,7 +29,7 @@ const Register = () => {
         }
       }
       dispatch(signupUser({ userName, timeFrames }));
-      navigate('/');
+      navigate('/main');
     } catch (error) {
       console.log(error);
     }

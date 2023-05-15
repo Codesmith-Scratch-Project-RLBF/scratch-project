@@ -31,7 +31,7 @@ const Login = () => {
         }
       }
       dispatch(loginUser({ userName, timeFrames }));
-      navigate('/');
+      navigate('/main');
     } catch (error) {
       console.log(error);
     }

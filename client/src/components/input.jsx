@@ -10,27 +10,29 @@ const Input = () => {
   const [day, setDay] = useState();
   const dispatch = useDispatch();
 
-  const username = useSelector((state) => {
-    return state.user.username;
+  const user = useSelector((state) => {
+    return state.user;
   });
 
   const handleAdd = async () => {
+    console.log('index,day', index, day);
     try {
       const response = await axios.patch(`/users/${username}`);
       const newTimeFrames = await response.json();
     } catch (err) {
       console.log(err);
     }
-
-    dispatch(addTime({ index: Number(index), day: day }));
+    dispatch(addTime({ index, day }));
   };
 
   const handleIndexChange = (event) => {
     setIndex(event.target.value);
+    console.log(index, event.target.value);
   };
 
   const handleDayChange = (event) => {
     setDay(event.target.value);
+    console.log(day, event.target.value);
   };
 
   return (
