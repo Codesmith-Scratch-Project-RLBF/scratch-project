@@ -12,10 +12,10 @@ const Time = (props) => {
   } else if (isColored === false) {
     paint = 'empty';
   } else {
-    paint = 'grey';
+    paint = 'gray';
   }
 
-  return <div className={paint}>{paint === 'multi' ? 'OVERLAP' : null}</div>;
+  return <div className={paint}></div>;
 };
 
 export default Time;

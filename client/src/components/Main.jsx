@@ -6,6 +6,7 @@ import Input from './input.jsx';
 import { useSelector } from 'react-redux';
 import './main.scss';
 import TimeIndicator from './timeIndicator';
+import Legend from './legend.jsx';
 function Main() {
   const { userName, timeFrames, users, otherTimeFrame } = useSelector(
     (state) => {
@@ -19,6 +20,9 @@ function Main() {
         <Usernames users={users} />
         <Input />
         <Button />
+        <div className='legendHolder'>
+          <Legend />
+        </div>
       </div>
       <div className='calendarHolder'>
         <TimeIndicator />
