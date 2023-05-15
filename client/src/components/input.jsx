@@ -48,7 +48,7 @@ const Input = () => {
       <h2>Add your free time</h2>
       <label>
         <span>Pick Day</span>
-        <select onChange={handleDayChange}>
+        <select className='daySelect' onChange={handleDayChange}>
           {daysOfTheWeek.map((day) => {
             return (
               <option key={day} value={day}>

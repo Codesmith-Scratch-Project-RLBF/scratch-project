@@ -13,7 +13,7 @@ const Time = (props) => {
     paint = 'empty';
   }
 
-  return <div className={paint}></div>;
+  return <div className={paint}>{paint === 'multi' ? 'FREE' : null}</div>;
 };
 
 export default Time;
