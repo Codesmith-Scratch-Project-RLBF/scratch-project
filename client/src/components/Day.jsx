@@ -8,13 +8,16 @@ const Day = (props) => {
   return (
     <div>
       {times.map((element, index) => {
-        let multicolor = false;
+        let color = element;
         if (otherTimeFrame) {
           if (element === true && otherTimeFrame[index] === true) {
-            multicolor = true;
+            color = 'multi';
+          } else if (element === false && otherTimeFrame[index] === true) {
+            console.log('other person has free time');
+            color = 'grey';
           }
         }
-        return <Time key={index} isColored={multicolor ? 'multi' : element} />;
+        return <Time key={index} isColored={color} />;
       })}
     </div>
   );

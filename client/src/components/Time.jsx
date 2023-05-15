@@ -11,9 +11,11 @@ const Time = (props) => {
     paint = 'fill';
   } else if (isColored === false) {
     paint = 'empty';
+  } else {
+    paint = 'grey';
   }
 
-  return <div className={paint}>{paint === 'multi' ? 'FREE' : null}</div>;
+  return <div className={paint}>{paint === 'multi' ? 'OVERLAP' : null}</div>;
 };
 
 export default Time;
